@@ -5,32 +5,9 @@ import (
 	"os"
 
 	"github.com/hibare/GoCommon/pkg/crypto/gpg"
+	"github.com/hibare/GoCommon/pkg/file"
 	"golang.org/x/term"
 )
-
-func readFile(path string) ([]byte, error) {
-	file, err := os.Open(path)
-	if err != nil {
-		return nil, err
-	}
-	defer file.Close()
-
-	// Get the file size
-	fileInfo, err := file.Stat()
-	if err != nil {
-		return nil, err
-	}
-	fileSize := fileInfo.Size()
-
-	// Read the file content into a buffer
-	data := make([]byte, fileSize)
-	_, err = file.Read(data)
-	if err != nil {
-		return nil, err
-	}
-
-	return data, nil
-}
 
 func readPasswordFromPrompt() (string, error) {
 	fmt.Print("Enter passphrase: ")
@@ -44,10 +21,9 @@ func readPasswordFromPrompt() (string, error) {
 }
 
 func GPGDecryptor(privateKeyPath, publicKeyPath, inputGPGFile string) {
-
 	gpg := gpg.GPG{}
 
-	data, err := readFile(privateKeyPath)
+	data, err := file.ReadFileBytes(privateKeyPath)
 	if err != nil {
 		fmt.Printf("err: %s", err)
 		return
@@ -55,7 +31,7 @@ func GPGDecryptor(privateKeyPath, publicKeyPath, inputGPGFile string) {
 
 	gpg.PrivateKey = string(data)
 
-	data, err = readFile(publicKeyPath)
+	data, err = file.ReadFileBytes(publicKeyPath)
 	if err != nil {
 		fmt.Printf("err: %s", err)
 		return

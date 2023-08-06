@@ -1,12 +1,11 @@
-/*
-Copyright © 2023 NAME HERE <EMAIL ADDRESS>
-*/
 package cmd
 
 import (
+	"fmt"
 	"os"
 
-	"github.com/hibare/GPGDecryptor/pkg/gpg"
+	"github.com/hibare/GPGDecryptor/internal/gpg"
+	"github.com/hibare/GPGDecryptor/internal/version"
 	"github.com/spf13/cobra"
 )
 
@@ -16,13 +15,16 @@ var (
 	inputGPGFile   string
 
 	rootCmd = &cobra.Command{
-		Use:   "GPGDecryptor",
-		Short: "Program to decrypt GPG files",
-		Long:  ``,
-		// Uncomment the following line if your bare application
-		// has an action associated with it:
+		Use:     "GPGDecryptor",
+		Version: version.CurrentVersion,
+		Short:   "Program to decrypt GPG files",
+		Long:    ``,
 		Run: func(cmd *cobra.Command, args []string) {
 			gpg.GPGDecryptor(privateKeyPath, publicKeyPath, inputGPGFile)
+			v := version.GetNewVersionInfo()
+			if v.NewVersionAvailable && v.LatestVersion != "" {
+				fmt.Printf("\n%s\n", v.GetUpdateNotification())
+			}
 		},
 	}
 )
