@@ -24,7 +24,7 @@ universal_binaries:
 
 nfpms:
   - id: nfpms
-    package_name: "gdecryptor"
+    package_name: "gpgdecryptor"
     file_name_template: "{{ .ConventionalFileName }}"
     vendor: Hibare.
     homepage: https://github.com/hibare/GPGDecryptor
