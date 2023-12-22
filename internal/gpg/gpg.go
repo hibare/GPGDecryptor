@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/hibare/GoCommon/pkg/crypto/gpg"
-	"github.com/hibare/GoCommon/pkg/file"
+	"github.com/hibare/GoCommon/v2/pkg/crypto/gpg"
+	"github.com/hibare/GoCommon/v2/pkg/file"
 	"golang.org/x/term"
 )
 

@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/hibare/GPGDecryptor/internal/constants"
-	"github.com/hibare/GoCommon/pkg/version"
+	"github.com/hibare/GoCommon/v2/pkg/version"
 )
 
 var (
