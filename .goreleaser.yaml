@@ -39,6 +39,19 @@ nfpms:
       postinstall: "scripts/postinstall.sh"
       preremove: "scripts/preremove.sh"
 
+signs:
+  - cmd: cosign
+    signature: "${artifact}.sig"
+    certificate: "${artifact}.pem"
+    args: 
+      - "sign-blob"
+      - "--oidc-issuer=https://token.actions.githubusercontent.com"
+      - "--output-certificate=${certificate}"
+      - "--output-signature=${signature}"
+      - "${artifact}"
+      - "--yes"
+    artifacts: all
+    
 checksum:
   name_template: "checksums.txt"
 
