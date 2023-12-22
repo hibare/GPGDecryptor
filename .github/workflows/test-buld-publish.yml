@@ -1,4 +1,4 @@
-name: goreleaser
+name: Test, Build & Publish
 
 on:
   push:
@@ -18,7 +18,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  release:
+  test-build-publish:
     permissions:
       contents: write
     runs-on: ubuntu-latest
