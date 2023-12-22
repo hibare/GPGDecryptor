@@ -1,7 +1,16 @@
 {
     "cSpell.words": [
+        "bindir",
         "Decryptor",
         "gomod",
-        "hibare"
+        "gpgdecryptor",
+        "hibare",
+        "incpatch",
+        "ldflags",
+        "nfpms",
+        "oidc",
+        "preremove",
+        "rlcp",
+        "tolower"
     ]
 }
