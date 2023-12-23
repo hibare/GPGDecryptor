@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Goreleaser
-        uses: hibare/.github/github/shared-workflows/goreleaser@goreleaser-wf # v0.2.0
+        uses: hibare/.github/github/shared-workflows/goreleaser@0962b9d76360405b3c4bf78f91424b7905bb03a8 # v0.3.0
         with:
           args: ${{ github.event_name == 'pull_request' && 'build --snapshot --clean' || 'release --clean' }}
           sign: ${{ github.event_name != 'pull_request' }}
