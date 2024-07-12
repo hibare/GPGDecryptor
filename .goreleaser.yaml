@@ -1,6 +1,7 @@
+version: 2
+
 source:
   enabled: true
-  rlcp: true
   name_template: "{{ .ProjectName }}-{{ .Version }}"
 
 before:
@@ -43,7 +44,7 @@ signs:
   - cmd: cosign
     signature: "${artifact}.sig"
     certificate: "${artifact}.pem"
-    args: 
+    args:
       - "sign-blob"
       - "--oidc-issuer=https://token.actions.githubusercontent.com"
       - "--output-certificate=${certificate}"
@@ -51,7 +52,7 @@ signs:
       - "${artifact}"
       - "--yes"
     artifacts: all
-    
+
 checksum:
   name_template: "checksums.txt"
 
