@@ -1,6 +1,6 @@
 module github.com/hibare/GPGDecryptor
 
-go 1.20
+go 1.22
 
 require (
 	github.com/hibare/GoCommon/v2 v2.6.0
