@@ -3,7 +3,7 @@ module github.com/hibare/GPGDecryptor
 go 1.22
 
 require (
-	github.com/hibare/GoCommon/v2 v2.13.0
+	github.com/hibare/GoCommon/v2 v2.17.0
 	github.com/spf13/cobra v1.8.1
 	golang.org/x/term v0.24.0
 )
