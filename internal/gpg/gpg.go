@@ -5,7 +5,6 @@ import (
 	"os"
 
 	"github.com/hibare/GoCommon/v2/pkg/crypto/gpg"
-	"github.com/hibare/GoCommon/v2/pkg/file"
 	"golang.org/x/term"
 )
 
@@ -23,30 +22,18 @@ func readPasswordFromPrompt() (string, error) {
 func GPGDecryptor(privateKeyPath, publicKeyPath, inputGPGFile string) {
 	gpg := gpg.GPG{}
 
-	data, err := file.ReadFileBytes(privateKeyPath)
-	if err != nil {
-		fmt.Printf("err: %s", err)
-		return
-	}
+	gpg.SetPrivateKey(privateKeyPath)
 
-	gpg.PrivateKey = string(data)
-
-	data, err = file.ReadFileBytes(publicKeyPath)
-	if err != nil {
-		fmt.Printf("err: %s", err)
-		return
-	}
-	gpg.PublicKey = string(data)
+	gpg.SetPublicKey(publicKeyPath)
 
 	pass, err := readPasswordFromPrompt()
 	if err != nil {
 		fmt.Printf("err: %s", err)
 		return
 	}
-	gpg.Passphrase = pass
 
 	fmt.Println("Decrypting file...")
-	dout, err := gpg.DecryptFile(inputGPGFile)
+	dout, err := gpg.DecryptFile(inputGPGFile, pass)
 	if err != nil {
 		fmt.Printf("err: %s", err)
 		return

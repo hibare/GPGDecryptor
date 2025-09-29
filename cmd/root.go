@@ -22,7 +22,7 @@ var (
 		Run: func(cmd *cobra.Command, args []string) {
 			gpg.GPGDecryptor(privateKeyPath, publicKeyPath, inputGPGFile)
 			v := version.GetNewVersionInfo()
-			if v.NewVersionAvailable && v.LatestVersion != "" {
+			if v.IsUpdateAvailable() && v.GetLatestVersion() != "" {
 				fmt.Printf("\n%s\n", v.GetUpdateNotification())
 			}
 		},
