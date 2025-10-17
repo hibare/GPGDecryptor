@@ -3,7 +3,7 @@ module github.com/hibare/GPGDecryptor
 go 1.25.1
 
 require (
-	github.com/hibare/GoCommon/v2 v2.26.0
+	github.com/hibare/GoCommon/v2 v2.28.0
 	github.com/spf13/cobra v1.10.1
 	golang.org/x/term v0.36.0
 )
@@ -17,7 +17,7 @@ require (
 	github.com/spf13/pflag v1.0.10 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/stretchr/testify v1.11.1 // indirect
-	golang.org/x/crypto v0.40.0 // indirect
+	golang.org/x/crypto v0.42.0 // indirect
 	golang.org/x/sys v0.37.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
