@@ -11,15 +11,8 @@ var (
 	CurrentVersion = "0.0.0"
 )
 
-func GetNewVersionInfo() version.Versions {
-	v, err := version.NewVersion(version.Options{
-		CurrentVersion: fmt.Sprintf("v%s", CurrentVersion),
-		GithubOwner:    constants.GithubOwner,
-		GithubRepo:     constants.GithubRepo,
-	})
-	if err != nil {
-		panic(err)
-	}
+func GetNewVersionInfo() version.VersionIface {
+	v := version.NewVersion(constants.GithubOwner, constants.GithubRepo, fmt.Sprintf("v%s", CurrentVersion), version.Options{})
 
 	v.CheckUpdate()
 
