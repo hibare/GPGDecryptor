@@ -28,12 +28,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Harden the runner (Audit all outbound calls)
-        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
         with:
           egress-policy: audit
 
       - name: Goreleaser
-        uses: hibare/.github/github/shared-workflows/goreleaser@ec61c90a75c7438d3fa683fffffd83908d1e7447 # v0.7.0
+        uses: hibare/.github/github/shared-workflows/goreleaser@dd476a05b332ac90984ccd15a52df080b0b649b3 # v0.7.0
         with:
           args: ${{ github.event_name == 'pull_request' && 'build --snapshot --clean' || 'release --clean' }}
           sign: ${{ github.event_name != 'pull_request' }}
